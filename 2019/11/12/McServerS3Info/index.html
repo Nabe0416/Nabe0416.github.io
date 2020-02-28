@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="游戏,Minecraft,">
+  <meta name="keywords" content="Minecraft,游戏,">
 
 
 
@@ -80,7 +80,7 @@
 
 
 <meta name="description" content="前言因为玩得很疯结果到现在才写这个页面，完全就是写给自己看的。毕竟也不会有其他人来看了。">
-<meta name="keywords" content="游戏,Minecraft">
+<meta name="keywords" content="Minecraft,游戏">
 <meta property="og:type" content="article">
 <meta property="og:title" content="猫猫锅锅长期服务器Season3">
 <meta property="og:url" content="http://yoursite.com/2019/11/12/McServerS3Info/index.html">
@@ -187,16 +187,6 @@
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-eorzeadiary">
-          <a href="/2019/10/02/EorzeaDiary/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-compass"></i> <br>
-            
-            艾欧泽亚日记
           </a>
         </li>
       
@@ -537,14 +527,29 @@
       
         <div class="post-tags">
           
-            <a href="/tags/游戏/" rel="tag"># 游戏</a>
-          
             <a href="/tags/Minecraft/" rel="tag"># Minecraft</a>
+          
+            <a href="/tags/游戏/" rel="tag"># 游戏</a>
           
         </div>
       
 
       
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
       
       
 
@@ -653,7 +658,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -666,7 +671,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -783,6 +788,12 @@
       </div>
     
 
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
     
 
   </div>
@@ -1265,6 +1276,43 @@
   
 
   
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "default";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "default";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "middleRight";
+      
+          flOptions.networks = "Weibo,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
   
 
   
