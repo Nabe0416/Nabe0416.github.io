@@ -348,7 +348,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-07-03T10:54:58+02:00">
+              <time title="更新于" itemprop="dateModified" datetime="2020-07-03T10:57:32+02:00">
                 2020-07-03
               </time>
             
@@ -393,46 +393,16 @@
 
       
         
-          
-            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>当时成功联机然后延迟还很低的时候确实震撼我妈。</p>
+          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>当时成功联机然后延迟还很低的时候确实震撼我妈。</p>
 <p>最近碰上有朋友指名要用MC局域网联机，对面在看什么Sakura FRP的教程的时候我寻思，我最近不是在捣腾FRP吗，就试着操作了一下。</p>
 <p>技术方面肯定有CS经验的人比我懂的不知道多到哪去了，我就不班门弄斧了。主要还是讲一下如何实施，记录一下。</p>
-<h1 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h1><p>首先你要准备这么几样东西：</p>
-<ul>
-<li>朋友</li>
-<li>一台有公网IP的服务器</li>
-<li>正版Minecraft账号</li>
-<li>最好是有一点linux经验</li>
-<li>主机端的网络不能太差</li>
-</ul>
-<h1 id="整活"><a href="#整活" class="headerlink" title="整活"></a>整活</h1><h2 id="服务器端"><a href="#服务器端" class="headerlink" title="服务器端"></a>服务器端</h2><p>在<a href="https://github.com/fatedier/frp/releases" target="_blank" rel="noopener">这里</a>找找适合你服务器的frp版本然后下载并安装，我的服务器是x86架构64位的Ubuntu，所以在SSH执行：</p>
-<p><code>wget https://github.com/fatedier/frp/releases/download/v0.33.0/frp_0.33.0_linux_amd64.tar.gz</code></p>
-<p>之后解压。</p>
-<p><code>tar -zxvf frp_0.33.0_linux_amd64.tar.gz</code></p>
-<p>等会还要回来开放端口的所以先说主机端。</p>
-<h2 id="主机端"><a href="#主机端" class="headerlink" title="主机端"></a>主机端</h2><p>谁想当主机谁就是主机端，最好是网络条件更好的人当主机端。</p>
-<p>主机端也要下载frp，在上面的那个链接里面找到【frp_0.33.0_windows_amd64.zip】下载并解压。</p>
-<p>打开Minecraft创建地图，并在ESC选单里打开【对局域网开放】</p>
-<p>聊天窗里会自动发送一条格式为【本游戏已在端口XXXXX上开启】的信息，记下端口。</p>
-<p>打开解压好的frp目录，编辑frpc.ini。</p>
-<p>打开后的frpc配置文件里有如下内容：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[common]</span><br><span class="line">server_addr = 127.0.0.1</span><br><span class="line">server_port = 7000</span><br><span class="line"></span><br><span class="line">[ssh]</span><br><span class="line">type = tcp</span><br><span class="line">local_ip = 127.0.0.1</span><br><span class="line">local_port = 22</span><br><span class="line">remote_port = 6000</span><br></pre></td></tr></table></figure>
-
-<p>修改<code>[common]</code>中的<code>server_addr</code>为你自己的公网服务器IP。<br>并在<code>[ssh]</code>下空一行，键入如下内容：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[Minecraft]</span><br><span class="line">type = tcp</span><br><span class="line">local_ip = 127.0.0.1</span><br><span class="line">local_port = [你刚才记下的端口]</span><br><span class="line">remote_port = [选一个你喜欢的端口]</span><br></pre></td></tr></table></figure>
-
-<p>然后回到服务器，开放那个你喜欢的端口，具体开放端口方式可以参考你租的服务器的文档。</p>
-<p>在服务端运行frps。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd frp_0.33.0_linux_amd64.tar.gz</span><br><span class="line">nohup ./frps -c ./frps.ini</span><br></pre></td></tr></table></figure>
-
-<p>回到主机端，打开控制台，进入你的frp目录，运行frpc。我这里frp解压到了D盘，所以运行如下指令。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">d:</span><br><span class="line">cd frp_0.33.0_windows_amd64</span><br><span class="line">frpc.exe</span><br></pre></td></tr></table></figure>
-
-<p>确定控制台中显示了<code>start proxy success</code>的信息之后保持控制台开启。</p>
-<h2 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h2><p>其他的玩家通过【你的公网服务器IP:你喜欢的端口】就可以进入你的局域网Minecraft服务器了。</p>
-<h1 id="后言"><a href="#后言" class="headerlink" title="后言"></a>后言</h1><p>这种方法可以算是有公网服务器的人最简单（？）的开服方式了，当然缺点就是只有你在玩的时候打开了LAN服务器和frpc别人才可以进。如果理想的话能用个树莓派挂个服务器当然是最方便了。用同样的方式做一次内网穿透，其他人就可以在你电脑没有hosting服务器的时候也可以玩了。而且如果mod多的话用PC开LAN服务器还是有点卡的。</p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/07/03/MinecraftLANhostingThroughFRP/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
